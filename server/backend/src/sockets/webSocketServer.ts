@@ -14,6 +14,7 @@ interface sendData {
   mode: string;
   PlaylistItem: PlaylistItem | null;
   currentIndex: number;
+  brightness?: number;
 }
 
 // Déclarer le serveur WebSocket avant son utilisation
@@ -298,6 +299,7 @@ export const handlePlaylistUpdate = async (playlistId: number) => {
           mode: itemMode,
           PlaylistItem: currentItem,
           currentIndex: currentIndex,
+          brightness: appSettings?.brightness ?? 10,
         };
 
         wsServer.clients.forEach((client) => {
@@ -326,6 +328,7 @@ const notifyModeChange = (modeName: string) => {
     mode: modeName,
     PlaylistItem: null,
     currentIndex: -1,
+    brightness: appSettings?.brightness ?? 10,
   };
 
   wsServer.clients.forEach((client) => {
@@ -421,6 +424,7 @@ const playNextItem = async () => {
     mode: itemMode,
     PlaylistItem: currentItem,
     currentIndex: currentIndex,
+    brightness: appSettings?.brightness ?? 10,
   };
 
   // Diffuser l'élément actuel à tous les clients
@@ -540,6 +544,7 @@ wsServer.on("connection", async (ws) => {
       mode: "standby",
       PlaylistItem: null,
       currentIndex: -1,
+      brightness: appSettings?.brightness ?? 10,
     };
     ws.send(JSON.stringify(data));
   } else if (currentMode) {
@@ -558,6 +563,7 @@ wsServer.on("connection", async (ws) => {
         mode: itemMode,
         PlaylistItem: currentItem,
         currentIndex: currentIndex,
+        brightness: appSettings?.brightness ?? 10,
       };
       ws.send(JSON.stringify(data));
     } else {
@@ -566,6 +572,7 @@ wsServer.on("connection", async (ws) => {
         mode: currentMode.name,
         PlaylistItem: null,
         currentIndex: -1,
+        brightness: appSettings?.brightness ?? 10,
       };
       ws.send(JSON.stringify(data));
     }
