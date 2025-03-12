@@ -1,32 +1,38 @@
-import React, { useEffect } from "react";
-import useSocketData from "./stores/socketDataStore";
+import { useEffect } from "react";
+import Editor from "./components/Editor";
+import Medias from "./components/Medias";
 import useData from "./hooks/useData";
-import useStandbyStore from "./stores/standbyStore";
-import TestComponents from "./components/TestComponents";
-import DataComposant from "./components/DataComposant";
-import PlaylistComposant from "./components/PlaylistComposant";
-import AccidentComposant from "./components/AccidentComposant";
-import InformationComposant from "./components/InformationComposant";
-
+import useSocketData from "./stores/socketDataStore";
+import TestComponent from "./components/TestComponent";
 function App() {
-  useData();
   const { socketData } = useSocketData();
-  const { isStandby } = useStandbyStore();
+
+  useData();
+
+  useEffect(() => {
+    console.log("Données actuelles du socket:", socketData);
+  }, [socketData]);
 
   return (
-    <>
-      {isStandby ? (
-        <></>
-      ) : (
-        <>
-          {socketData?.mode.name === "test" && <TestComponents />}
-          {socketData?.mode.name === "data" && <DataComposant />}
-          {socketData?.mode.name === "playlist" && <PlaylistComposant />}
-          {socketData?.mode.name === "accident" && <AccidentComposant />}
-          {socketData?.mode.name === "information" && <InformationComposant />}
-        </>
+    <div
+      style={{
+        opacity: socketData?.brightness !== undefined
+          ? socketData.brightness === 0
+            ? 0
+            : socketData.brightness / 10
+          : 1,
+        zIndex: 9999,
+      }}
+    >
+    
+      {socketData?.mode === "media" && (
+        <Medias media={socketData.PlaylistItem.media} />
       )}
-    </>
+      {socketData?.mode === "data" && (
+        <Editor data={socketData.PlaylistItem.data} />
+      )}
+      {socketData?.mode === "test" && <TestComponent />}
+    </div>
   );
 }
 

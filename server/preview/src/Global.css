@@ -1,28 +1,5 @@
-@font-face {
-  font-family: "stratos-bold";
-  src: local("stratos-bold"),
-    url("/fonts/stratos-bold.otf") format("opentype"); /* Chemin ajusté */
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-  font-family: "stratos-medium";
-  src: local("stratos-medium"),
-  url("/fonts/stratos-medium.otf") format("opentype"); /* Chemin ajusté */
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-  font-family: "stratos-regular";
-  src: local("stratos-regular"),
-    url("/fonts/stratos-regular.otf") format("opentype"); /* Chemin ajusté */
-    font-weight: normal;
-    font-style: normal;
-}
-
 body,
 #root {
-  font-family: "stratos-regular", sans-serif;
   margin: 0;
   background-color: #000000;
   color: rgb(255, 255, 255);
@@ -57,14 +34,13 @@ body,
 
 .header-text {
   font-size: 17px;
-  font-family: "stratos-bold", sans-serif;
-  color: #F1921D;
+
+  color: #f1921d;
 }
 
 .info-section {
-  font-family: "stratos-bold", sans-serif;
   height: 100%;
-  background-color: #000000;
+  /*   background-color: #000000; */
   padding: 7px 10px;
   display: flex;
   justify-content: space-between;
@@ -74,20 +50,18 @@ body,
 .info-text {
   line-height: 1.2;
   font-size: 21px;
-  font-family: "stratos-bold", sans-serif;
+
   display: flex;
   flex-direction: column;
   color: white;
-  font-weight: bold; 
-
+  font-weight: bold;
 }
 .info-text-light {
   font-size: 14px;
-  font-family: "stratos-regular", sans-serif;
 }
 
 .info-value {
-  background-color: black;
+  /*   background-color: black; */
   height: 35px;
   width: 68px;
   border: 2px solid white;
@@ -100,13 +74,95 @@ body,
   padding-right: 5px;
 }
 
-.info-value-texte{
+.info-value-texte {
   margin-top: 6px;
-
 }
 
-.info-value-date{
+.info-value-date {
   font-size: 32px;
-  font-family: "stratos-bold";
+
   padding-top: 15px;
+}
+
+.editorTextArea {
+}
+.tiptap {
+  :first-child {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.fixed-editor {
+  width: 288px;
+  height: 432px;
+  font-size: 32px;
+  overflow: hidden !important;
+}
+p.is-editor-empty:first-child::before {
+  color: #d3d7df;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.auto-date-component {
+  display: inline-block;
+
+  border-radius: 4px;
+}
+
+.auto-time-component {
+  display: inline-block;
+
+  border-radius: 4px;
+}
+
+.auto-temperature-component {
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.ProseMirror {
+  margin: 1px;
+}
+
+.tiptap {
+  :first-child {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.fixed-editor {
+  overflow: hidden;
+  width: 288px;
+  height: 432px;
+  font-size: 32px;
+
+  overflow: hidden !important;
+}
+.ProseMirror {
+  outline: none;
+  height: 100%;
+}
+
+p.is-editor-empty:first-child::before {
+  color: #d3d7df;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap-text-container {
+  background-size: 100% 100%;
+  color: #ffffff;
 }

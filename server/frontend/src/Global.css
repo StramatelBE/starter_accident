@@ -1,16 +1,8 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'stratos-regular', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 .gridComponentLittle {
   justify-content: center;
   align-items: center;
@@ -94,8 +86,6 @@ code {
   min-height: calc(94vh - 120px);
 }
 
-
-
 @media (max-width: 600px) {
   .headerTitle {
     max-width: 300px;
@@ -112,4 +102,60 @@ code {
   .headerTitle {
     max-width: 680px;
   }
+}
+
+.editorTextArea {
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+.tiptap {
+  :first-child {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.fixed-editor {
+  overflow: hidden;
+  width: 288px;
+  height: 432px;
+  font-size: 32px;
+
+  overflow: hidden !important;
+}
+.ProseMirror {
+  outline: none;
+  height: 100%;
+}
+
+p.is-editor-empty:first-child::before {
+  color: #d3d7df;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.auto-date-component {
+  display: inline-block;
+
+  border-radius: 4px;
+}
+
+.auto-time-component {
+  display: inline-block;
+
+  border-radius: 4px;
+}
+
+.ProseMirror {
+  margin: 1px;
+}
+
+.tiptap-text-container {
+  margin: 0 auto;
+  background-size: 100% 100%;
+  color: #ffffff;
 }

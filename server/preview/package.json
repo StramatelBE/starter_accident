@@ -12,8 +12,17 @@
   },
   "dependencies": {
     "@dotenvx/dotenvx": "^0.26.0",
+    "@tiptap/core": "^2.11.2",
+    "@tiptap/extension-color": "^2.11.2",
+    "@tiptap/extension-text-align": "^2.11.0",
+    "@tiptap/extension-text-style": "^2.11.0",
+    "@tiptap/extension-underline": "^2.11.0",
+    "@tiptap/pm": "^2.11.0",
+    "@tiptap/react": "^2.11.0",
+    "@tiptap/starter-kit": "^2.11.0",
     "electron": "^31.2.1",
     "net": "^1.0.2",
+    "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "zustand": "^4.5.4"
